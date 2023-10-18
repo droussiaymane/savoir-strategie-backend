@@ -1,5 +1,6 @@
 # savoir-strategie-backend
-<img width="100%" alt="Screenshot 2023-10-18 at 19 43 59" src="https://github.com/droussiaymane/savoir-strategie-backend/assets/60798100/b08b0ac8-41f4-4864-ba12-319a8f0ebbc4">
+
+<img width="100%" alt="Screenshot 2023-10-18 at 19 43 59" src="https://github.com/droussiaymane/savoir-strategie-backend/assets/60798100/e4d63bd0-2046-4a3b-9094-a4e13738a73e">
 
 
 <h2>Project Overview</h2>
