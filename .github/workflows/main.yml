@@ -1,0 +1,29 @@
+name: Build a Docker image and Push it to ACR
+env:
+  SPRING_PROFILES_ACTIVE: production
+  DB_SERVER: ${{ secrets.DB_SERVER }}
+  DB_USERNAME: ${{ secrets.DB_USERNAME }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_ENDPOINT }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - run: |
+          docker build . -t ${{ secrets.ACR_ENDPOINT }}/savoir-strategie-image:latest --build-arg DB_SERVER=${{ secrets.DB_SERVER }} --build-arg DB_USERNAME=${{ secrets.DB_USERNAME }} --build-arg DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+          docker push ${{ secrets.ACR_ENDPOINT }}/savoir-strategie-image:latest
+
+
